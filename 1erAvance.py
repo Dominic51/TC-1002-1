@@ -18,3 +18,22 @@ sp['Tipo_Flor']=sp['Tipo_Flor'].replace(['Iris-versicolor','Iris-virginica','Iri
 data=sp.values
 X= data[:,0:-1]
 y=data[:,-1]
+
+emb=NeighborhoodComponentsAnalysis(n_components=2)
+X3t =emb.fit_transform(X,y)
+plt.scatter(X3t[:,0],X3t[:,-1],c=y)   
+plt.title('Iris dataset Neighborhood')
+plt.show()
+
+emb= Isomap(n_components=2)
+X4t =emb.fit_transform(X,y)
+plt.scatter(X4t[:,0],X4t[:,-1],c=y)   
+plt.title('Iris dataset Isomap')
+plt.show()
+
+
+emb=MDS(n_components=2)
+x5t= emb.fit_transform(X,y)
+plt.scatter(x5t[:,0],x5t[:,1],c=y)
+plt.title('Iris dataset MDS')
+plt.show()
